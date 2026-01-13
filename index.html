@@ -31,12 +31,56 @@
         </section>
     </header>
 
-    <main>
-        <section id="about" class="container">
-            <p>About Me</p>
-            <p class="reveal">
-                I design and build web experiences that feel considered...
-            </p>
+    <main class="pt-20">
+        <section id="about" class="relative container min-h-screen flex items-center">
+            <!-- Left sticky note trigger -->
+            <button
+                class="about-sticky left reveal"
+                data-reveal="scroll"
+                data-delay="medium"
+                data-note="process"
+                aria-label="Open process note"
+            >
+                ?
+            </button>
+
+            <!-- Main Content -->
+            <div class="max-w-xl mx-auto">
+                <h2
+                    class="reveal font-sans uppercase tracking-wide text-xs opacity-60 mb-6"
+                    data-reveal="scroll"
+                >
+                    About Me
+                </h2>
+
+                    <p
+                        class="reveal font-serif text-lg md:text-xl leading-relaxed"
+                        data-reveal="scroll"
+                    >
+                        I design and build web experiences that feel considered — from how they look,
+                        to how they’re interacted with, to how they’re understood.
+                    </p>
+
+                    <p
+                        class="reveal font-serif text-lg md:text-xl leading-relaxed mt-6"
+                        data-reveal="scroll"
+                        data-delay="short"
+                    >
+                        I care about clarity, rhythm, and the details most people won’t notice —
+                        but always feel.
+                    </p>
+            </div>
+
+            <!-- Right sticky -->
+            <button
+                class="about-sticky right reveal"
+                data-reveal="scroll"
+                data-delay="long"
+                data-note="values"
+                aria-label="Open values note"
+            >
+                !
+            </button>
         </section>
 
         <section id="projects" class="container">
