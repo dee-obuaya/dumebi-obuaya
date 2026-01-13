@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================================================
+   Motion tokens (Global)
+   ================================================== */
+:root {
+    /* --- Spatial motion --- */
+    --reveal-distance: 24px;
+
+    /* --- Timing --- */
+    --reveal-duration-fast: 400ms;
+    --reveal-duration-base: 600ms;
+
+    /* --- Delays --- */
+    --reveal-delay-none: 0ms;
+    --reveal-delay-short: 120ms;
+    --reveal-delay-medium: 240ms;
+    --reveal-delay-long: 360ms;
+
+    /* --- Easing --- */
+    --ease-quiet: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==================================================
+   Quiet reveal utilities
+   ================================================== */
+@layer utilities {
+    .reveal {
+        opacity: 0;
+        transform: translateY(var(--reveal-distance));
+        transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
+        will-change: opacity, transform;
+        -webkit-transform: translateY(var(--reveal-distance));
+        -moz-transform: translateY(var(--reveal-distance));
+        -ms-transform: translateY(var(--reveal-distance));
+        -o-transform: translateY(var(--reveal-distance));
+        -webkit-transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
+        -moz-transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
+        -ms-transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
+        -o-transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+    }
+
+    /* --- Delay modifiers (applied via data attributes) --- */
+
+    .reveal[data-delay='short'] {
+        transition-delay: var(--reveal-delay-short);
+    }
+
+    .reveal[data-delay='medium'] {
+        transition-delay: var(--reveal-delay-medium);
+    }
+
+    .reveal[data-delay='long'] {
+        transition-delay: var(--reveal-delay-long);
+    }
+
+    /* --- Reduced motion respect --- */
+    @media (prefers-reduced-motion: reduce) {
+        .reveal {
+            opacity: 1;
+            transform: none;
+            transition: none;
+            -webkit-transform: none;
+            -moz-transform: none;
+            -ms-transform: none;
+            -o-transform: none;
+}
+    }
+}
+
+/* ==================================================
+   Custom styles
+   ================================================== */
