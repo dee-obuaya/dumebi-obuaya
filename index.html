@@ -31,27 +31,34 @@
         </section>
     </header>
 
-    <main class="pt-20">
-        <section id="about" class="relative container min-h-screen flex items-center">
-            <!-- Left sticky note trigger -->
+    <main>
+        <section id="about" class="relative container min-h-screen py-32">
+            <!-- Left sticky -->
             <button
-                class="about-sticky left reveal"
-                data-reveal="scroll"
-                data-delay="medium"
-                data-note="process"
-                aria-label="Open process note"
+                class="sticky-note sticky-left"
+                data-modal="about-left"
+                aria-haspopup="dialog"
             >
                 ?
             </button>
 
-            <!-- Main Content -->
-            <div class="max-w-xl mx-auto">
-                <h2
+            <!-- Right sticky -->
+            <button
+                class="sticky-note sticky-right"
+                data-modal="about-right"
+                aria-haspopup="dialog"
+            >
+                !
+            </button>
+
+            <!-- About Content -->
+            <div class="max-w-xl mx-auto space-y-6 text-left">
+                <p
                     class="reveal font-sans uppercase tracking-wide text-xs opacity-60 mb-6"
                     data-reveal="scroll"
                 >
                     About Me
-                </h2>
+                </p>
 
                     <p
                         class="reveal font-serif text-lg md:text-xl leading-relaxed"
@@ -70,18 +77,22 @@
                         but always feel.
                     </p>
             </div>
-
-            <!-- Right sticky -->
-            <button
-                class="about-sticky right reveal"
-                data-reveal="scroll"
-                data-delay="long"
-                data-note="values"
-                aria-label="Open values note"
-            >
-                !
-            </button>
         </section>
+
+        <!-- MODAL OVERLAY -->
+        <div class="modal-overlay" hidden></div>
+
+        <!-- LEFT MODAL -->
+        <div class="modal" id="about-left" role="dialog" aria-modal="true" hidden>
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <p class="reveal" data-reveal="load">I think a lot about intention.</p>
+        </div>
+
+        <!-- RIGHT MODAL -->
+        <div class="modal" id="about-right" role="dialog" aria-modal="true" hidden>
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <p class="reveal" data-reveal="load">I obsess over interaction details.</p>
+        </div>
 
         <section id="projects" class="container">
             <p>Recent Work</p>
@@ -97,6 +108,7 @@
         <p class="reveal">© 2026 Chukwudumebi Obuaya</p>
     </footer>
 
+    <script src="./js/modal.js" defer></script>
     <script src="./js/reveal.js" defer></script>
 </body>
 </html>
