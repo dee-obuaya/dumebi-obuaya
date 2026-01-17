@@ -82,3 +82,53 @@
 /* ==================================================
    Custom styles
    ================================================== */
+/* Stickies (temporary, ugly on purpose) */
+.sticky-note {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: serif;
+  font-size: 1.25rem;
+  opacity: 0.6;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sticky-left {
+  left: 1rem;
+}
+
+.sticky-right {
+  right: 1rem;
+}
+
+/* Modal system */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 40;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  max-width: 420px;
+  width: calc(100% - 3rem);
+  z-index: 50;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
