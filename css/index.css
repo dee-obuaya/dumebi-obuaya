@@ -3,56 +3,52 @@
 @tailwind utilities;
 
 /* ==================================================
-   Motion tokens (Global)
+   DESIGN TOKENS
    ================================================== */
 :root {
-    /* --- Spatial motion --- */
+    /* --- Motion: spatial --- */
     --reveal-distance: 24px;
 
-    /* --- Timing --- */
-    --reveal-duration-fast: 400ms;
-    --reveal-duration-base: 600ms;
+    /* --- Motion: duration --- */
+    --motion-fast: 200ms;
+    --motion-base: 300ms;
+    --motion-slow: 600ms;
 
-    /* --- Delays --- */
+    /* --- Motion: delays --- */
     --reveal-delay-none: 0ms;
-    --reveal-delay-short: 120ms;
-    --reveal-delay-medium: 240ms;
-    --reveal-delay-long: 360ms;
+    --reveal-delay-short: 150ms;
+    --reveal-delay-medium: 300ms;
+    --reveal-delay-long: 500ms;
 
-    /* --- Easing --- */
+    /* --- Motion: easing --- */
     --ease-quiet: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* --- Fonts --- */
+    --font-serif: "Playfair Display", serif;
+    --font-sans: "Inter", sans-serif;
 }
 
 /* ==================================================
-   Quiet reveal utilities
+   MOTION SYSTEM
    ================================================== */
+
+/* --- Quiet reveal --- */
 @layer utilities {
     .reveal {
         opacity: 0;
         transform: translateY(var(--reveal-distance));
-        transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
+        transition:
+        opacity var(--motion-slow) var(--ease-quiet),
+        transform var(--motion-slow) var(--ease-quiet);
         will-change: opacity, transform;
-        -webkit-transform: translateY(var(--reveal-distance));
-        -moz-transform: translateY(var(--reveal-distance));
-        -ms-transform: translateY(var(--reveal-distance));
-        -o-transform: translateY(var(--reveal-distance));
-        -webkit-transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
-        -moz-transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
-        -ms-transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
-        -o-transition: opacity var(--reveal-duration-base) var(--ease-quiet), transform var(--reveal-duration-base) var(--ease-quiet);
     }
 
     .reveal.is-visible {
         opacity: 1;
         transform: translateY(0);
-        -webkit-transform: translateY(0);
-        -moz-transform: translateY(0);
-        -ms-transform: translateY(0);
-        -o-transform: translateY(0);
     }
 
-    /* --- Delay modifiers (applied via data attributes) --- */
-
+    /* Delay modifiers */
     .reveal[data-delay='short'] {
         transition-delay: var(--reveal-delay-short);
     }
@@ -65,70 +61,99 @@
         transition-delay: var(--reveal-delay-long);
     }
 
-    /* --- Reduced motion respect --- */
+    /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
         .reveal {
-            opacity: 1;
-            transform: none;
-            transition: none;
-            -webkit-transform: none;
-            -moz-transform: none;
-            -ms-transform: none;
-            -o-transform: none;
-}
+        opacity: 1;
+        transform: none;
+        transition: none;
+        }
     }
 }
 
 /* ==================================================
-   Custom styles
+   INTERACTIVE ELEMENTS
    ================================================== */
-/* Stickies (temporary, ugly on purpose) */
+
+/* --- Sticky notes --- */
 .sticky-note {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: serif;
-  font-size: 1.25rem;
-  opacity: 0.6;
-  background: none;
-  border: none;
-  cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    opacity: 0.6;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity var(--motion-fast) ease, transform var(--motion-fast) ease;
+}
+
+.sticky-note:hover {
+    opacity: 1;
+    transform: translateY(-2px) rotate(-1deg);
 }
 
 .sticky-left {
-  left: 1rem;
+    left: 1rem;
 }
 
 .sticky-right {
-  right: 1rem;
+    right: 1rem;
 }
 
-/* Modal system */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 40;
-}
+/* ==================================================
+   MODAL SYSTEM
+   ================================================== */
 
+/* Overlay + state */
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 2rem;
-  max-width: 420px;
-  width: calc(100% - 3rem);
-  z-index: 50;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--motion-base) ease;
+    z-index: 50;
 }
 
+.modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Modal card */
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 420px;
+    padding: 2rem 2.25rem;
+    border-radius: 4px;
+
+    opacity: 0;
+    transform: translateY(8px);
+    transition:
+        opacity var(--motion-base) var(--ease-quiet),
+        transform var(--motion-base) var(--ease-quiet);
+}
+
+.modal.is-open .modal-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Close button */
 .modal-close {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background: none;
-  border: none;
-  font-size: 1.25rem;
-  cursor: pointer;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
 }
