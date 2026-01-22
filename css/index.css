@@ -89,6 +89,17 @@
 /* ==================================================
     CUSTOM STYLES
    ================================================== */
+html {
+    /* For Internet Explorer and Edge */
+    -ms-overflow-style: none;
+    /* For Firefox */
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     background: var(--color-bg-main);
     color: var(--color-text-main);
@@ -202,6 +213,15 @@ body {
     box-shadow: inset -1px 0 rgba(0, 0, 0, 0.08);
 }
 
+/* Sticky active / pressed state */
+.sticky-note.is-activating {
+    transform: translateY(-58%) rotate(0deg) scale(1.02);
+    opacity: 0.95;
+
+    box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.12),
+        0 14px 28px rgba(0, 0, 0, 0.14);
+}
 
 .sticky-left {
     top: 55%;
@@ -279,7 +299,7 @@ body {
         0 18px 40px rgba(0, 0, 0, 0.18);
 
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(12px) scale(0.98);
     transition:
         opacity var(--motion-base) var(--ease-quiet),
         transform var(--motion-base) var(--ease-quiet);
@@ -301,7 +321,7 @@ body {
 
 .modal.is-open .modal-content {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 /* Close button */
