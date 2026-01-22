@@ -94,6 +94,29 @@ body {
     color: var(--color-text-main);
 }
 
+/* ==================================================
+   ABOUT SECTION
+   ================================================== */
+#about {
+    background: var(--color-bg-muted);
+}
+
+#about p.uppercase {
+    color: var(--color-text-muted);
+}
+
+#about p.font-serif {
+    color: var(--color-text-main);
+}
+
+#about .about-divider {
+    height: 1px;
+    width: 3rem;
+    background: var(--color-accent-ink);
+    opacity: 0.25;
+    margin: 2.5rem 0;
+}
+
 
 /* ==================================================
    INTERACTIVE ELEMENTS
