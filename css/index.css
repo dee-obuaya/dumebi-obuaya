@@ -26,6 +26,21 @@
     /* --- Fonts --- */
     --font-serif: "Playfair Display", serif;
     --font-sans: "Inter", sans-serif;
+
+    /* --- Neutrals --- */
+    --color-bg-main: #f7f3ef;        /* soft off-white */
+    --color-bg-muted: #efede9;       /* section breaks */
+    --color-text-main: #2e2b28;      /* primary text */
+    --color-text-muted: #6f6a65;     /* secondary text */
+
+    /* --- Accent (used sparingly) --- */
+    --color-accent-soft: #e7b7c8;    /* blush / pink */
+    --color-accent-paper: #f3c9d6;   /* sticky base */
+    --color-accent-ink: #7a3b55;     /* deep pink-brown */
+    --color-accent-deep: #b07a6f;    /* muted terracotta */
+
+    /* --- UI utility --- */
+    --color-overlay: rgba(0, 0, 0, 0.25);
 }
 
 /* ==================================================
@@ -70,6 +85,15 @@
         }
     }
 }
+
+/* ==================================================
+    CUSTOM STYLES
+   ================================================== */
+body {
+    background: var(--color-bg-main);
+    color: var(--color-text-main);
+}
+
 
 /* ==================================================
    INTERACTIVE ELEMENTS
