@@ -23,9 +23,21 @@ function closeModal() {
 
 stickyButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-        openModal(btn.dataset.modal);
+        // 1. Animate sticky first
+        btn.classList.add('is-activating');
+
+        // 2. Slight delay before modal opens
+        setTimeout(() => {
+            openModal(btn.dataset.modal);
+        }, 200);
+
+        // 3. Clean up sticky state
+        setTimeout(() => {
+            btn.classList.remove('is-activating');
+        }, 300);
     });
 });
+
 
 closeButtons.forEach(btn => {
     btn.addEventListener('click', closeModal);
