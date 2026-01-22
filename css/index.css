@@ -252,17 +252,51 @@ body {
 
 /* Modal card */
 .modal-content {
-    background: white;
+    /* paper surface */
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 245, 245, 0.85),
+            rgba(255, 245, 245, 0.95)
+        ),
+        repeating-linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0.01),
+            rgba(0, 0, 0, 0.01) 1px,
+            transparent 1px,
+            transparent 3px
+        ),
+        var(--color-bg-main);
     width: 90%;
     max-width: 420px;
     padding: 2rem 2.25rem;
-    border-radius: 4px;
+
+    color: var(--color-text-main);
+
+    border-radius: 6px 8px 7px 9px;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.12),
+        0 18px 40px rgba(0, 0, 0, 0.18);
 
     opacity: 0;
     transform: translateY(8px);
     transition:
         opacity var(--motion-base) var(--ease-quiet),
         transform var(--motion-base) var(--ease-quiet);
+}
+
+.modal-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+
+    pointer-events: none;
 }
 
 .modal.is-open .modal-content {
@@ -276,7 +310,20 @@ body {
     top: 0.75rem;
     right: 0.75rem;
     background: none;
+    color: var(--color-text-muted);
+    opacity: 0.7;
     border: none;
     font-size: 1.25rem;
     cursor: pointer;
+
+    transition: opacity var(--motion-fast) ease;
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+.modal-content p {
+    color: var(--color-text-main);
+    line-height: 1.6;
 }
