@@ -32,10 +32,12 @@
     </header>
 
     <main>
-        <section id="about" class="relative container min-h-screen py-32">
+        <section id="about" class="about-section relative container min-h-screen py-32">
             <!-- Left sticky -->
             <button
-                class="sticky-note sticky-left"
+                class="sticky-note sticky-left reveal"
+                data-reveal="scroll"
+                data-delay="long"
                 data-modal="about-left"
                 aria-haspopup="dialog"
             >
@@ -43,7 +45,9 @@
 
             <!-- Right sticky -->
             <button
-                class="sticky-note sticky-right"
+                class="sticky-note sticky-right reveal"
+                data-reveal="scroll"
+                data-delay="long"
                 data-modal="about-right"
                 aria-haspopup="dialog"
             >
@@ -51,28 +55,31 @@
 
             <!-- About Content -->
             <div class="max-w-xl mx-auto space-y-6 text-left">
-                <p
-                    class="reveal font-sans uppercase tracking-wide text-xs opacity-60 mb-6"
+                <h2
+                    class="reveal about-heading font-sans uppercase tracking-wide text-xs opacity-60 mb-6"
                 >
                     About Me
+                </h2>
+
+                <p
+                    class="reveal font-serif text-lg md:text-xl leading-relaxed"
+                    data-reveal="scroll"
+                    data-delay="medium"
+                >
+                    I design and build web experiences that feel considered — from how they look,
+                    to how they’re interacted with, to how they’re understood.
                 </p>
 
-                    <p
-                        class="reveal font-serif text-lg md:text-xl leading-relaxed"
-                    >
-                        I design and build web experiences that feel considered — from how they look,
-                        to how they’re interacted with, to how they’re understood.
-                    </p>
+                <div class="about-divider reveal" data-delay="short"></div>
 
-                    <div class="about-divider reveal" data-delay="medium"></div>
-
-                    <p
-                        class="reveal font-serif text-lg md:text-xl leading-relaxed mt-6"
-                        data-delay="short"
-                    >
+                <p
+                    class="reveal font-serif text-lg md:text-xl leading-relaxed mt-6"
+                    data-reveal="scroll"
+                    data-delay="medium"
+                >
                         I care about clarity, rhythm, and the details most people won’t notice —
                         but always feel.
-                    </p>
+                </p>
             </div>
         </section>
 
