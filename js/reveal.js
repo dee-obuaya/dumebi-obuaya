@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const loadReveals = document.querySelectorAll('.reveal[data-reveal="load"]');
 
     loadReveals.forEach((el) => {
-    const delay = delays[el.dataset.delay] ?? 0;
+        const delay = delays[el.dataset.delay] ?? 0;
 
-    setTimeout(() => {
-        el.classList.add("is-visible");
-    }, delay);
+        setTimeout(() => {
+            el.classList.add("is-visible");
+        }, delay);
     });
 
 
