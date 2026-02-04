@@ -128,6 +128,25 @@ body {
     margin: 2.5rem 0;
 }
 
+/* About section breathing */
+.about-section {
+    --about-float: 0;
+}
+
+.about-section .reveal.is-visible {
+    animation: aboutFloat 6s ease-in-out infinite;
+    animation-delay: 1.2s;
+}
+
+@keyframes aboutFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
 
 /* ==================================================
    INTERACTIVE ELEMENTS
@@ -231,6 +250,8 @@ body {
     box-shadow:
         -1px 1px 0 rgba(0, 0, 0, 0.03),
         0 6px 12px rgba(0, 0, 0, 0.06);
+
+    --sticky-rotate: -3deg;
 }
 
 .sticky-right {
@@ -241,6 +262,31 @@ body {
     box-shadow:
         1px 1px 0 rgba(0, 0, 0, 0.03),
         0 6px 12px rgba(0, 0, 0, 0.06);
+
+
+    --sticky-rotate: 2deg;
+}
+
+/* Sticky idle motion */
+.sticky-note.is-visible {
+    animation: stickyDrift 7s ease-in-out infinite;
+}
+
+.sticky-left.is-visible {
+    animation-delay: 0.8s;
+}
+
+.sticky-right.is-visible {
+    animation-delay: 1.4s;
+}
+
+@keyframes stickyDrift {
+    0%, 100% {
+        transform: rotate(var(--sticky-rotate)) translateY(0);
+    }
+    50% {
+        transform: rotate(calc(var(--sticky-rotate) * 0.9)) translateY(-3px);
+    }
 }
 
 /* ==================================================
