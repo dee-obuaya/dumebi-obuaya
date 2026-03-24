@@ -19,6 +19,7 @@
     --reveal-delay-short: 150ms;
     --reveal-delay-medium: 300ms;
     --reveal-delay-long: 500ms;
+    --reveal-delay-xlong: 600ms;
 
     /* --- Motion: easing --- */
     --ease-quiet: cubic-bezier(0.22, 1, 0.36, 1);
@@ -133,7 +134,8 @@ body {
     --about-float: 0;
 }
 
-.about-section .reveal.is-visible {
+.about-section .about-heading.is-visible,
+.about-section p.reveal.is-visible {
     animation: aboutFloat 6s ease-in-out infinite;
     animation-delay: 1.2s;
 }
@@ -209,12 +211,12 @@ body {
 }
 
 .sticky-note:hover {
-    opacity: 0.85;
-    transform: translateY(-54%) rotate(-1.5deg);
+    opacity: 0.9;
     box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.1),
-        0 10px 18px rgba(0, 0, 0, 0.08);
-
+        0 3px 6px rgba(0, 0, 0, 0.12),
+        0 14px 28px rgba(0, 0, 0, 0.14);
+    --sticky-hover-rotate: 0deg;
+    transform: scale(1.03);
 }
 
 .sticky-note::after {
@@ -285,7 +287,7 @@ body {
         transform: rotate(var(--sticky-rotate)) translateY(0);
     }
     50% {
-        transform: rotate(calc(var(--sticky-rotate) * 0.9)) translateY(-3px);
+        transform: rotate(var(--sticky-rotate)) translateY(-3px);
     }
 }
 
